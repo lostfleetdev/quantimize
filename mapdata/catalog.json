@@ -1,1 +1,14 @@
-{"Mumbai, India": {"network_type": "drive", "mapfile": "mapdata/downloads/Mumbai, India_drive_network.graphml"}}
+{
+    "Mumbai, India": {
+        "network_type": "drive",
+        "mapfile": "mapdata/downloads/Mumbai, India_drive_network.graphml",
+        "nodes": 18774,
+        "edges": 43161
+    },
+    "Pune, India": {
+        "network_type": "drive",
+        "mapfile": "mapdata/downloads/Pune, India_drive_network.graphml",
+        "nodes": 32877,
+        "edges": 75838
+    }
+}
