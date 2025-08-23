@@ -24,17 +24,6 @@ def list_maps():
             print(f"  Nodes: {details['nodes']}, Edges: {details['edges']}")
             print("-" * 40)
 
-
-# function to check if the map file exists at the path mentioned in catalog
-# def check_map_exists(place_name, network_type):
-#     creatcatt()
-#     with open(catt, 'r') as f:
-#         catalog = json.load(f)
-#         if place_name in catalog:
-#             if catalog[place_name]["network_type"] == network_type:
-#                 return True
-#     return False
-
 def check_map_exists(place_name, network_type):
     creatcatt()
     with open(catt, 'r') as f:
@@ -45,20 +34,6 @@ def check_map_exists(place_name, network_type):
         if entry.get("network_type") == network_type and os.path.exists(entry.get("mapfile", "")):
             return True
     return False
-
-
-# def add_to_catt(place_name, network_type, mapfilepath, nodes, edges):
-#     creatcatt()
-#     with open(catt, 'r+') as f:
-#         catalog = json.load(f)
-#         catalog[place_name] = {
-#             "network_type": network_type,
-#             "mapfile": mapfilepath,
-#             "nodes": nodes,
-#             "edges": edges
-#         }
-#         f.seek(0)
-#         json.dump(catalog, f)
 
 def add_to_catt(place_name, network_type, mapfilepath, nodes, edges):
     creatcatt()

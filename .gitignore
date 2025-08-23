@@ -6,6 +6,9 @@ __pycache__/
 # C extensions
 *.so
 
+# catalog
+mapdata/catalog.json
+
 # Distribution / packaging
 .Python
 build/
