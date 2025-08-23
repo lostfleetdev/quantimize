@@ -1,5 +1,10 @@
 # quantimize
 
+## init
+1. start with setting up the venv using python venv to env
+2. install requirements.txt
+3. start using `main.py`
+
 ## current progress
 cli tool can download a specific map and save it as graphml dataset and list current catalog
 
