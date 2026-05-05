@@ -1,31 +1,86 @@
 # quantimize
 
-## init
-1. start with setting up the venv using python venv to env
-2. install requirements.txt
-3. start using `main.py`
+Quantimize is a map intelligence CLI that pulls real OpenStreetMap road networks, stores them as reusable GraphML datasets, and turns them into interactive HTML maps with route overlays.  
+It is fast to run, easy to inspect, and already useful for routing experiments and geospatial demos.
 
-## current progress
-cli tool can download a specific map and save it as graphml dataset and list current catalog
+## what it can do right now
+
+- Download road networks for any place supported by OSM (`drive`, `walk`, etc.).
+- Save networks as GraphML for reuse and offline analysis.
+- Keep a local dataset catalog with node/edge counts.
+- Generate interactive Folium map visualizations.
+- Compute shortest paths by estimated travel time and render the route.
+
+## stack
+
+- Python
+- OSMnx + NetworkX
+- Folium
+- GeoPandas + Shapely
+
+## quick start (uv)
+
+1. Install [uv](https://docs.astral.sh/uv/).
+2. From this folder, create and activate a virtual environment:
+   - Windows PowerShell:
+     ```powershell
+     uv venv
+     .\.venv\Scripts\Activate.ps1
+     ```
+   - macOS/Linux:
+     ```bash
+     uv venv
+     source .venv/bin/activate
+     ```
+3. Install dependencies:
+   ```bash
+   uv pip install -r requirements.txt
+   ```
+
+## CLI usage
+
+```bash
+python main.py -h
+```
+
+### list downloaded maps
+
+```bash
+python main.py --list
+```
+
+### download a map
+
+```bash
+python main.py --download --place_name "Pune, India" --network_type drive
+```
+
+### visualize full map
+
+```bash
+python main.py --visualize --place_name "Pune, India" --network_type drive --sample_edges 2000
+```
+
+### visualize shortest path by travel time
+
+```bash
+python main.py --visualize --place_name "Pune, India" --network_type drive \
+  --start_lat 18.5204 --start_lon 73.8567 \
+  --end_lat 18.5314 --end_lon 73.8446
+```
+
+This creates an HTML map in `mapdata/downloads/` and opens it in your browser.
+
+## project structure
 
 ```
-❯ py .\main.py -h
-usage: main.py [-h] [-l] [-d] [-n PLACE_NAME] [-t NETWORK_TYPE]
-
-Download map data and more functions coming soon.
-
-options:
-  -h, --help            show this help message and exit
-  -l, --list            List all available maps.
-  -d, --download        Download the map data.
-  -n PLACE_NAME, --place_name PLACE_NAME
-                        Name of the place to download the map for.
-  -t NETWORK_TYPE, --network_type NETWORK_TYPE
-                        Type of network to download (e.g., 'drive', 'walk').
-
-Example usage: python main.py --list python main.py -d -n 'Pune, India' -t 'drive'
+quantimize/
+  main.py
+  requirements.txt
+  mapdata/
+    down.py
+    catalog.py
+    visualize.py
+    downloads/        # generated GraphML + HTML output
+    catalog.json      # generated local index
 ```
-
-## things to add
-- [ ] ability to visualize path and output html
-- [ ] the real fukin thing QUANTUM THINGY MAGIC  
